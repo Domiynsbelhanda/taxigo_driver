@@ -51,8 +51,6 @@ dependencies:
   smart_select: ^4.3.2
   sticky_headers: "^0.1.8"
   shared_preferences: ^0.5.12+4
-  flutter_localizations:
-    sdk: flutter
 
 
 dev_dependencies:

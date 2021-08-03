@@ -122,7 +122,7 @@ class _HomeTabState extends State<HomeTab> {
 
                           setState(() {
                             availabilityColor = BrandColors.colorGreen;
-                            availabilityTitle = Translations.of(context).text('go_online');
+                            availabilityTitle = 'GO ONLINE';
                             isAvailable = true;
                           });
 
@@ -133,7 +133,7 @@ class _HomeTabState extends State<HomeTab> {
                           Navigator.pop(context);
                           setState(() {
                             availabilityColor = BrandColors.colorOrange;
-                            availabilityTitle = Translations.of(context).text('go_online');
+                            availabilityTitle = 'GO ONLINE';
                             isAvailable = false;
                           });
                         }

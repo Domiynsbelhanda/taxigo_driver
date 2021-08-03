@@ -22,8 +22,6 @@ Future<void> main() async {
   currentFirebaseUser = await FirebaseAuth.instance.currentUser;
 
   SharedPreferences prefs = await SharedPreferences.getInstance();
-  //Return String
-  langue = prefs.getString('langue');
 
   runApp(MyApp());
 }
@@ -39,26 +37,11 @@ class MyApp extends StatefulWidget {
 
 
 class _MyApp extends State<MyApp> {
-
-  SpecificLocalizationDelegate _localeOverrideDelegate;
   // This widget is the root of your application.
 
   @override
   void initState(){
     super.initState();
-    _localeOverrideDelegate = new SpecificLocalizationDelegate(null);
-    ///
-    /// Let's save a pointer to this method, should the user wants to change its language
-    /// We would then call: applic.onLocaleChanged(new Locale('en',''));
-    /// 
-    applic.onLocaleChanged = onLocaleChange;
-    applic.onLocaleChanged(new Locale(langue,''));
-  }
-
-  onLocaleChange(Locale locale){
-    setState((){
-      _localeOverrideDelegate = new SpecificLocalizationDelegate(locale);
-    });
   }
 
   @override
@@ -73,14 +56,6 @@ class _MyApp extends State<MyApp> {
           primarySwatch: Colors.blue,
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
-
-      localizationsDelegates: [
-        _localeOverrideDelegate,
-        const TranslationsDelegate(),
-        GlobalMaterialLocalizations.delegate,
-        GlobalWidgetsLocalizations.delegate,
-      ],
-      supportedLocales: applic.supportedLocales(),
 
         initialRoute: (currentFirebaseUser == null) ? LoginPage.id : MainPage.id,
         routes: {
